@@ -8,6 +8,7 @@ import { Provider } from 'react-redux';
 import { createLogger } from 'redux-logger';
 import thunkMiddleware from 'redux-thunk';
 import reducer from './reducers';
+import { fetchData } from './actions';
 
 
 // Create the redux store with two middleware
@@ -19,6 +20,7 @@ const store = createStore(
     )
 );
 
+store.dispatch(fetchData());
 
 // Just standard React & Redux stuff here.
 ReactDOM.render(
