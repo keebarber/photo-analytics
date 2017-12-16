@@ -4,6 +4,7 @@
     "express": "^4.16.2",
     "express-delay": "^0.2.0",
     "jquery": "^3.2.1",
+    "lodash": "^4.17.4",
     "nodemon": "^1.12.1",
     "prettier": "^1.9.0",
     "react-bodymovin": "^1.1.1",

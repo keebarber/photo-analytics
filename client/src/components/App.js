@@ -3,13 +3,15 @@ import { fetchData } from '../actions';
 import { connect } from 'react-redux';
 import UserInformation from './UserInformation';
 import Images from './Images';
+import MathFunctions from './MathFunctions';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <div onClick={this.props.fetchData}>Click Me!</div>
+        <button onClick={this.props.fetchData}>Click Me!</button>
         <UserInformation />
+        <MathFunctions />
         <Images />
       </div>
     );

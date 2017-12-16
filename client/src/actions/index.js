@@ -13,6 +13,12 @@ export function fetchData() {
                 dispatch(receiveData(data));
             }
         );
+        $.get(
+            "https://api.instagram.com/v1/users/self?access_token=1382121603.5ba55fd.e9676234074b4ce8bf674c2ba19a8816",
+            function(userData) {
+                dispatch(receiveUserData(userData));
+            }
+        );
     };
 }
 
@@ -29,5 +35,14 @@ function receiveData(results) {
     return {
         type: "RECEIVE_DATA",
         results
+    };
+}
+
+function receiveUserData(userResults) {
+    console.log("This is the output from instagram");
+    console.log(userResults);
+    return {
+        type: "RECEIVE_USER_DATA",
+        userResults
     };
 }

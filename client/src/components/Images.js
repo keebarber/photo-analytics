@@ -12,11 +12,27 @@ class Images extends Component {
     render() {
         if(this.props.postsReceived) {
         const posts = this.props.results.data.map(post => {
-            const image = post.images.low_resolution.url;
-            return <img key={post.id} src={image} />;
+            let image = post.images.low_resolution.url;
+            let likes = post.likes.count;
+            let comments = post.comments.count;
+            let time = post.created_time;
+            let tags = post.tags.map(tag => {
+                 return tag;
+            });
+            let link = post.link;
+            let location = post.location;
+
+            return (
+                    <div key={post.id}>
+            {/*           <img src={image} />
+                       <p>{tags}</p>*/}
+                    </div>
+                );
         });
         return (
-            <div>{posts}</div>
+            <div className="images">
+                <div className="each-image">{posts}</div>
+            </div>
         );
     } else {
             return <div>Nothing Received</div>;

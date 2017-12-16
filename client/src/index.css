@@ -3,3 +3,61 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.app {
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	align-content: center;
+}
+
+.flex-container {
+	display: flex;
+	justify-content: center;
+	border:  1px solid black;
+}
+
+.userinformation {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	flex-direction: column;
+		border:  1px solid black;
+
+}
+.userinformation img {
+	width:  240px;
+	height:  240px;
+}
+
+.userinformation p {
+	margin:  0;
+	padding:  0;
+}
+
+._userstats {
+	display: flex;
+	flex-direction: row;
+}
+
+._userstats p {
+	margin: 0 20px;
+}
+
+/* 	Here begins the styling for the actual images as they show up	 */
+
+.images {
+	display: flex;
+	justify-content: space-around;
+}
+
+.each-image {
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+
+.each-image img{
+	width:  auto;
+	height:  auto;
+}
