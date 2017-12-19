@@ -58,6 +58,25 @@ body {
 }
 
 .each-image img{
-	width:  auto;
+	width:  250px;
 	height:  auto;
+}
+
+#maths {
+	/* display: flex; */
+	flex-direction: row;
+}
+
+#topfive {
+	display:  flex;
+	justify-content: space-around;
+}
+
+#bottomfive {
+	display:  flex;
+	justify-content: space-around;
+}
+
+.five img{
+	width: 250px;
 }

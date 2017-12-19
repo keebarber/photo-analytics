@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { _ } from 'lodash';
+import { flatten } from 'lodash';
+
 
 class MathFunctions extends Component {
     constructor(props) {
@@ -31,15 +33,13 @@ console.log("Month of post: " + month);
 console.log("Date of post: " + date);
 
 
-
-
-
-
         if(this.props.postsReceived) {
             let totalLiked = 0;
             let topFive = {};
             let bottomFive = {};
             const posts = this.props.results.data;
+
+
 
 //  Returns total number of recent likes
         const totalLikes = this.props.results.data.map(post => {
@@ -50,28 +50,38 @@ console.log("Date of post: " + date);
 //  Computes the average likes for each post
     const averageLikes = totalLiked / 20;
 
+
+
+
 //  Computes the top 5 posts
     const top5 = posts.sort((a,b) => {
         return  a.likes.count < b.likes.count ? 1 : -1; }
                     ).slice(0,5);
 
     const top5Posts = top5.map(post => {
-        return  (<div key={post.id}>
+        return  (<div className="five" key={post.id}>
                     <img src={post.images.thumbnail.url} />
                     <p>{post.likes.count}</p>
                 </div>);
 });
+
+
+
+
 //Computes the lowest 5 posts
     const bottom5 = posts.sort((a,b) => {
         return  a.likes.count < b.likes.count ? -1 : 1; }
                     ).slice(0,5);
 
     const bottom5Posts = bottom5.map(post => {
-         return  (<div key={post.id}>
+         return  (<div className="five" key={post.id}>
                     <img src={post.images.thumbnail.url} />
                     <p>{post.likes.count}</p>
                 </div>);
 });
+
+
+
 
 //  Sorts posts by day of week
     const postsByDayOfWeek = posts.map(post => {
@@ -92,8 +102,10 @@ console.log("Date of post: " + date);
         }, {});
     console.log(dayCount);
 
-// Sorts posts by time of day
 
+
+
+// Sorts posts by time of day
 const postsByTimeOfDay = posts.map(post => {
     let timeOfPost = new Date(post.created_time * 1000);
     let hourOfPost = timeOfPost.getHours();
@@ -111,13 +123,28 @@ const hourCount = postsByTimeOfDay.reduce( (obj, hour) => {
             return obj;
         }, {});
     console.log(hourCount);
-    
+
+//  Collects an array of all tags used in recent posts
+    const collectionOfTags = posts.map(post => {
+        const arrayOfTags = [];
+
+        let newArray = post.tags.map(tag => {
+            return arrayOfTags.push(tag);
+        });
+        return arrayOfTags;
+    });
+
+let flattened = flatten(collectionOfTags);
+console.log(flattened);
+        
+
+
 
 
         return (
-            <div>
-                <div>Top 10 photos by likes: {top5Posts}</div>
-                <div>Bottom 5 photos by likes: {bottom5Posts}</div>
+            <div id="maths">
+                <div id="topfive">Top 10 photos by likes: {top5Posts}</div>
+                <div id="bottomfive">Bottom 5 photos by likes: {bottom5Posts}</div>
                 <div>Average Likes: {averageLikes}</div>
                 <div>Total Likes: {totalLiked}</div>
             </div> 
